@@ -40,11 +40,15 @@ def get_recommendation(data, pred):
             reasons.append("Some input features indicate risk")
         return "Loan Rejected due to: " + ", ".join(reasons) + " Try to improve these aspects."
 
-st.title("🏦 Loan Approval Prediction App")
-
-st.markdown("### Please fill in your loan application details below:")
+st.title("Loan Approval Prediction App")
 
 with st.form("loan_form"):
+            st.markdown("""
+            ### About This App
+
+            This app predicts loan approval based on your input data using a machine learning model.  
+            Fill in the form to see if your loan is likely to be **approved** or **rejected**, along with helpful recommendations.
+            """)
     col1, col2 = st.columns(2)
 
     with col1:
