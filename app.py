@@ -44,8 +44,6 @@ st.title("Loan Approval Prediction App")
 
 with st.form("loan_form"):
     st.markdown("""
-    ### About This App
-
     This app predicts loan approval based on your input data using a machine learning model.  
     Fill in the form to see if your loan is likely to be **approved** or **rejected**, along with helpful recommendations.
     """)
