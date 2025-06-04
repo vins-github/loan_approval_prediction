@@ -97,9 +97,9 @@ with st.form("loan_form"):
             prediction = 'Approved' if pred == 1 else 'Rejected'
             recommendation = get_recommendation(data, pred)
 
+            st.subheader(f"Prediction Result: {prediction}")
             if prediction == "Rejected":
-                st.error(f"Prediction Result: {prediction}")
-                st.info(recommendation)
+                st.error(recommendation)
             else:
-                st.success(f"Prediction Result: {prediction}")
-                st.info(recommendation)
+                st.success(recommendation)
+
