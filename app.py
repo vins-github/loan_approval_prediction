@@ -42,12 +42,9 @@ def get_recommendation(data, pred):
 
 st.title("Loan Approval Prediction App")
 
-with st.form("loan_form"):
-    st.markdown("""
-    This app predicts loan approval based on your input data using a machine learning model.  
-    Fill in the form to see if your loan is likely to be **approved** or **rejected**, along with helpful recommendations.
-    """)
+st.markdown("### Please fill in your loan application details below:")
 
+with st.form("loan_form"):
     col1, col2 = st.columns(2)
 
     with col1:
@@ -100,5 +97,9 @@ with st.form("loan_form"):
             prediction = 'Approved' if pred == 1 else 'Rejected'
             recommendation = get_recommendation(data, pred)
 
-            st.subheader(f"Prediction Result: {prediction}")
-            st.info(recommendation)
+            if prediction == "Rejected":
+                st.error(f"Prediction Result: {prediction}")
+                st.info(recommendation)
+            else:
+                st.success(f"Prediction Result: {prediction}")
+                st.info(recommendation)
