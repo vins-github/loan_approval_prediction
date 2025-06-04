@@ -60,7 +60,7 @@ with st.form("loan_form"):
         applicant_income = st.number_input("Applicant Income", min_value=0.0)
         coapplicant_income = st.number_input("Coapplicant Income", min_value=0.0)
         loan_amount = st.number_input("Loan Amount", min_value=0.0)
-        loan_term = st.number_input("Loan Amount Term (in months)", min_value=1.0)
+        loan_term = st.number_input("Loan Amount Term (in months)", min_value=1, step=1, format="%d")
         property_area = st.selectbox("Property Area", ["Urban", "Semiurban", "Rural"])
 
     submitted = st.form_submit_button("Submit")
