@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from sklearn.ensemble import RandomForestClassifier
+
 
 model = joblib.load('model_rf.pkl')
 
@@ -60,7 +62,7 @@ with st.form("loan_form"):
         applicant_income = st.number_input("Applicant Income", min_value=0.0)
         coapplicant_income = st.number_input("Coapplicant Income", min_value=0.0)
         loan_amount = st.number_input("Loan Amount", min_value=0.0)
-        loan_term = st.number_input("Loan Amount Term (in months)", min_value=1, step=1, format="%d")
+        loan_term = st.number_input("Loan Amount Term (in months)", min_value=1.0)
         property_area = st.selectbox("Property Area", ["Urban", "Semiurban", "Rural"])
 
     submitted = st.form_submit_button("Submit")
@@ -97,9 +99,9 @@ with st.form("loan_form"):
             prediction = 'Approved' if pred == 1 else 'Rejected'
             recommendation = get_recommendation(data, pred)
 
-            st.subheader(f"Prediction Result: {prediction}")
             if prediction == "Rejected":
-                st.error(recommendation)
+                st.error(f"Prediction Result: {prediction}")
+                st.info(recommendation)
             else:
-                st.success(recommendation)
-
+                st.success(f"Prediction Result: {prediction}")
+                st.info(recommendation)
