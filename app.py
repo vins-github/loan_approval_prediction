@@ -1,12 +1,15 @@
 import streamlit as st
 import pandas as pd
-import joblib
+import pickle
 
-model = joblib.load('model_rf.pkl')
+# Load model
+with open('model_rf.pkl', 'rb') as f:
+    model = pickle.load(f)
 
 FEATURES = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed',
             'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term',
             'Credit_History', 'Property_Area']
+
 
 def get_recommendation(data, pred):
     max_loan_ratio = 20
