@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-model = joblib.load('model_rf.pkl')
+with open('model_rf.pkl', 'rb') as f:
+    model = cloudpickle.load(f)
 
 FEATURES = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed',
             'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term',
