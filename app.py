@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
 import joblib
+from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
-
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, OneHotEncoder
+from sklearn.impute import SimpleImputer
+from sklearn.compose import ColumnTransformer
 
 model = joblib.load('model_rf.pkl')
 
